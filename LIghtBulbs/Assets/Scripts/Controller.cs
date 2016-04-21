@@ -73,16 +73,17 @@ public class Controller : MonoBehaviour {
              {
                  if(hitInfo.transform.gameObject.CompareTag("LightBulb"))
                  {
+                     var selectedLight = hitInfo.transform.GetComponent<LightBulb>();
                      switch (mSelectionState)
                      {
                          case SelectionState.FirstSelection:
-                             firstPoint = hitInfo.transform.GetComponent<LightBulb>().mPosition;
-                             Debug.Log(firstPoint);
+                             firstPoint = selectedLight.mPosition;
+                             selectedLight.Select();
                              mSelectionState = SelectionState.SecondSelection;
                              break;
                          case SelectionState.SecondSelection:
-                             SecondPoint = hitInfo.transform.GetComponent<LightBulb>().mPosition;
-                             Debug.Log(SecondPoint);
+                             SecondPoint = selectedLight.mPosition;
+                             selectedLight.Select();
                              mSelectionState = SelectionState.UpdateLights;
                              break;
                      }

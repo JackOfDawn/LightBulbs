@@ -9,14 +9,19 @@ public class LightBulb : MonoBehaviour {
     [SerializeField]
     Material mOffMaterial;
 
+    [SerializeField]
+    Material mSelectedMat;
+
     Renderer mRenderer;
 
     public Vector2 mPosition {get; private set;}
     
 	// Use this for initialization
-	void Start () 
+    public void Select()
     {
-	}
+        if (mSelectedMat)
+            mRenderer.material = mSelectedMat;
+    }
 
     public void Init(Vector2 pos)
     {
